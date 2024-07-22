@@ -1,27 +1,7 @@
-// mixGenes(uint256 genes1, uint256 genes2, uint256 targetBlock)
-
-import { HypersyncClient, JoinMode, Query } from "@envio-dev/hypersync-client";
-import { decodeFunctionData, parseAbi, toFunctionSelector } from 'viem';
-
-function unixToReadable(unixTimestamp: number) {
-  const date = new Date(unixTimestamp * 1000); // Convert to milliseconds
-  return date.toLocaleString(); // Returns a string with a human-readable format
-}
-
-const kittyAbi = parseAbi([
-  'function setGeneScienceAddress(address to)',
-]);
-
-const setGeneScienceFunctionSignature = toFunctionSelector("function setGeneScienceAddress(address _address) external")
-// const functionSignature = toFunctionSelector("function mixGenes(uint256 genes1, uint256 genes2, uint256 targetBlock) public returns (uint256)")
-
-console.log(setGeneScienceFunctionSignature);
-
-// Create hypersync client using the mainnet hypersync endpoint
-const client = HypersyncClient.new({
-  url: "https://eth.hypersync.xyz",
-  maxNumRetries: 3,
-});
+import { Query } from "@envio-dev/hypersync-client";
+import { decodeFunctionData } from 'viem';
+import { kittyAbi, setGeneScienceFunctionSignature } from "./lib/Abis";
+import { client, unixToReadable } from "./lib/helpers";
 
 // The query to run
 const query: Query = {
@@ -33,7 +13,6 @@ const query: Query = {
     block: ["timestamp"],
   },
 };
-
 
 async function main() {
   const receiver = await client.stream(query, {});
