@@ -1,4 +1,4 @@
-import { Query } from "@envio-dev/hypersync-client";
+import { Query, TraceField, BlockField } from "@envio-dev/hypersync-client";
 import { decodeFunctionData } from 'viem';
 import { client, getGenes } from "./lib/helpers";
 import { geneScienceAbi, mixGenesFunctionSignature } from "./lib/Abis";
@@ -17,7 +17,8 @@ const query: Query = {
     ]
   }],
   fieldSelection: {
-    trace: ["input", "output"],
+    trace: [TraceField.Input, TraceField.Output],
+    block: [BlockField.Timestamp],
   },
 };
 

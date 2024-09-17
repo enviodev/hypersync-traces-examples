@@ -5,7 +5,8 @@ import { HypersyncClient } from "@envio-dev/hypersync-client";
 // Create hypersync client using the mainnet hypersync endpoint
 export const client = HypersyncClient.new({
   url: "https://eth.hypersync.xyz",
-  maxNumRetries: 3,
+  bearerToken: "TOKEN",
+  /// other optional config
 });
 
 

@@ -2,7 +2,6 @@
   "name": "hypersync-traces-examples",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "all-kitten-births": "ts-node ./src/getAllKittenBirthGenes.ts",
     "get-all-gene-science-contracts": "ts-node ./src/getAllGeneScienceContracts.ts",
@@ -12,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@envio-dev/hypersync-client": "^0.3.3",
+    "@envio-dev/hypersync-client": "^0.6.2",
     "@types/node": "^20.14.11",
     "ethers": "^6.13.1",
     "ts-node": "^10.9.2",
